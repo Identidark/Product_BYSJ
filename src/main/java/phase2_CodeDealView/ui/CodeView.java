@@ -1,5 +1,7 @@
 package phase2_CodeDealView.ui;
 
+import common.exceptionUtil.PublicMapNonExistentException;
+import common.exceptionUtil.TempletNullExcepiton;
 import common.xmlUtil.XmlUtil;
 import phase2_CodeDealView.util.CodeUtil;
 
@@ -449,6 +451,8 @@ public class CodeView extends javax.swing.JFrame{
             //this.jTextField10.setText(publicMap.get("db"));
             //this.jTextField11.setText(publicMap.get("dbuser"));
             //this.jTextField12.setText(publicMap.get("dbpassword"));
+        }else{
+            throw new PublicMapNonExistentException("二阶段初始化文件不存在！");
         }
     }
 
@@ -482,7 +486,12 @@ public class CodeView extends javax.swing.JFrame{
                     //获取当前文件夹下的模板目录下的所有文件夹          获取当前文件夹下所选取的模板文件夹
                     String basePath = new File("").getAbsolutePath() + File.separatorChar + "模板" + File.separatorChar
                             + jComboBox1.getSelectedItem();//设定为当前文件夹
+                    if (jComboBox1.getSelectedItem() == null || jComboBox1.getSelectedItem() == ""){
+                        JOptionPane.showMessageDialog(null, "请选择模板", "提示",
+                                JOptionPane.DEFAULT_OPTION);
+                        throw new TempletNullExcepiton("未选择生成模板！");
 
+                    }
                     pathMap.put("templetPath", basePath);
                     pathMap.put("projectTempletPath", basePath + File.separatorChar + "工程模板");
                     pathMap.put("tablleTempletPath", basePath + File.separatorChar + "表级模板");

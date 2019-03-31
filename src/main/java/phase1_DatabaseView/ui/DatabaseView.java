@@ -72,7 +72,7 @@ public class DatabaseView extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();                 //127.0.0.1
         jLabel5 = new JLabel();                                     //服务器IP
 
-        //setTitle("\u4f20\u667a\u5218\u5907\u4ee3\u7801\u751f\u6210\u56682.3");
+        //setTitle("\u6a21\u677f\u4ee3\u7801\u751f\u6210\u5668\u0020 v1.0");
         setTitle("模板代码生成器 v1.0      ---By Identidark");
         setBackground(new java.awt.Color(204, 255, 204));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,7 +93,7 @@ public class DatabaseView extends javax.swing.JFrame {
         jLabel1.setText("\u9009\u62e9\u6570\u636e\u5e93\u7c7b\u578b");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(
-                new String[]{"--请选择--"}));
+                new String[]{"—请选择—"}));
 
         jLabel2.setText("\u7528\u6237\u540d");
 
@@ -102,7 +102,7 @@ public class DatabaseView extends javax.swing.JFrame {
         jLabel4.setText("\u6570\u636e\u5e93");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(
-                new String[]{"--请选择数据库--"}));
+                new String[]{"—请选择数据库—"}));
 
         jButton1.setText("\u6d4b\u8bd5\u8fde\u63a5");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -299,6 +299,8 @@ public class DatabaseView extends javax.swing.JFrame {
             try {
                 //获取用户选择的数据库
                 db = this.jComboBox2.getSelectedItem().toString();
+                // TODO 数据库未选取情况！！！！！！！！！！！！！！！！！！！！！！！！1
+
             } catch (Exception e1) {
             }
 
@@ -377,7 +379,7 @@ public class DatabaseView extends javax.swing.JFrame {
                 try {
 
                     DatabaseUtil util = new DatabaseUtil();
-                    //根据数据库种类设置数据元信息，只登录数据库
+                    //根据数据库种类设置数据元信息，登录数据库
                     Map<String, String> map = dbMap.get(jComboBox1.getSelectedItem());
                     util.setDriverName(map.get("driverName"));
                     String url = map.get("url").replace("[ip]", jTextField3.getText()).replace("[db]", "");
@@ -397,7 +399,6 @@ public class DatabaseView extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "连接成功", "提示",
                             JOptionPane.DEFAULT_OPTION);
                     jButton2.setText("下一步");
-
                 } catch (ClassNotFoundException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
