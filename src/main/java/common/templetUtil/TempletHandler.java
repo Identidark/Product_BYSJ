@@ -65,8 +65,8 @@ public class TempletHandler {
     }
 
     /**
-     * 替换表级模板
-     * @param oldContent 原文本
+     * 替换表级模板       先判断待替换文本中是否含有表级模班，若有则遍历所有表替换表级模板内容，然后替换待替换文本内容
+     * @param oldContent 带替换文本
      * @param map 子替换符号列表
      * @param tables 该数据库表集合
      * @return
@@ -122,11 +122,11 @@ public class TempletHandler {
 
 
     /**
-     * 替换列级模板
-     * @param oldContent 原文本
+     * 替换工程模板中列级模板内容
+     * @param oldContent 待替换工程模板文本内容
      * @param map 子替换符号列表		{模板名:模板内容,....}
      * @param table 当前表		{name:...,columns:[列1,列2,...],...}
-     * @return
+     * @return 替换完毕的工程模板
      */
     public static String createContent(String oldContent,  Map<String,String> map ,Table table)
     {
@@ -135,7 +135,7 @@ public class TempletHandler {
         {
             String thf="<"+ks+">";//替换符号			待替换处模板名标识
 
-            if(oldContent.indexOf(thf)>=0)		//待处理文本中是否有待替换内容
+            if(oldContent.indexOf(thf)>=0)		//判断待处理文本中是否有列级模板内容
             {
                 String foreachContent=map.get(ks);//循环体		替换内容
 
@@ -202,6 +202,7 @@ public class TempletHandler {
                     if(b)
                     {
                         System.out.println("替换符号内容："+foreachContent);
+                        //处理列级模板内容
                         String newContent= foreachContent.replace("[column]", column.getColumnName());		//字段名称
                         newContent=newContent.replace("[Column]", NameHandler.getClassName(column.getColumnName()) );		//首字母大写
 
@@ -218,7 +219,7 @@ public class TempletHandler {
                         System.out.println("替换后内容："+newContent);
                     }
                 }
-                oldContent=oldContent.replace(thf, createContent.toString());//替换主体内容
+                oldContent=oldContent.replace(thf, createContent.toString());//替换主体内容       替换工程模板中列级模板内容
             }
         }
 

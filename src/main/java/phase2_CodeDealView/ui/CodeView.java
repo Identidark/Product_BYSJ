@@ -441,7 +441,8 @@ public class CodeView extends javax.swing.JFrame{
         //	this.jTextField5.setText(pathMap.get("codePath"));
         //}
 
-        // TODO publicMap.xml生成的临时文件？？？？？？？为什么要在初始化的时候进行读取显示？充当缓存？
+        // TODO publicMap.xml？？？？？？？生成的临时文件，存储用户之前二阶段适配信息
+        // TODO 为什么要在初始化的时候进行读取显示？？？？？？？充当缓存
         Map<String, String> publicMap = XmlUtil.read("publicMap.xml");
         if (publicMap != null && publicMap.size() > 0) {
             this.jTextField6.setText(publicMap.get("project"));

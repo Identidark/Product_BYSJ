@@ -55,7 +55,7 @@ public class CodeUtil {
                 //读取模板文件内容
                 String content=FileUtil.getContent(t.getAllPath());
 
-                //替换表级模板部分
+                //替换表级模板部分 TODO 没有表级模板，可省
                 content= TempletHandler.createContentForTable(content, tableTempletMap, tableList);
 
                 //如果文件名包含表替换符号则循环输出
