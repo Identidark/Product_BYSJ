@@ -29,7 +29,7 @@ public class CodeUtil {
     {
         //变量定义
         String projectTempletPath=pathMap.get("projectTempletPath");//框架模板所在目录
-        String tablleTempletPath=pathMap.get("tablleTempletPath");//表级模板所在目录
+//        String tablleTempletPath=pathMap.get("tablleTempletPath");//表级模板所在目录
         String columnTempletPath=pathMap.get("columnTempletPath");//列级模板所在目录
         String xmlPath=pathMap.get("xmlPath");//数据库信息文件
         String codePath=pathMap.get("codePath");//代码输出目录
@@ -41,7 +41,7 @@ public class CodeUtil {
 
         List<Table> tableList = DBinfo2Xml.readDatabaseXml(xmlPath);//得到该数据库中表的集合
 
-        Map<String ,String> tableTempletMap= TempletHandler.getTempletList(tablleTempletPath);//表级模板MAP
+//        Map<String ,String> tableTempletMap= TempletHandler.getTempletList(tablleTempletPath);//表级模板MAP
         Map<String ,String> columnTempletMap= TempletHandler.getTempletList(columnTempletPath);//列级模板MAP
         List<Templet> list = TempletGetUtil.getTempletList(projectTempletPath);//获取此项目所有模板集合
         //循环所有模板
@@ -56,7 +56,7 @@ public class CodeUtil {
                 String content=FileUtil.getContent(t.getAllPath());
 
                 //替换表级模板部分 TODO 没有表级模板，可省
-                content= TempletHandler.createContentForTable(content, tableTempletMap, tableList);
+//                content= TempletHandler.createContentForTable(content, tableTempletMap, tableList);
 
                 //如果文件名包含表替换符号则循环输出
                 if(t.getFileName().indexOf("[table]")>=0  || t.getFileName().indexOf("[Table]")>=0  ||

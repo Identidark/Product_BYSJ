@@ -100,7 +100,7 @@ public class DatabaseUtil {
         Connection connection = java.sql.DriverManager.getConnection(url, userName, passWord);
         //获取数据库对象实例
         DatabaseMetaData metaData = connection.getMetaData();
-        //获取所有数据库信息 TODO ResultSet里有什么？？？？？？？？？？？？？？？
+        //获取所有数据库信息
         ResultSet rs = metaData.getCatalogs();
         List<String> list=new ArrayList<String>();
         while(rs.next())

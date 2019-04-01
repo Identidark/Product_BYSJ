@@ -389,11 +389,13 @@ public class DatabaseView extends javax.swing.JFrame {
 
                     util.setUserName(jTextField1.getText());
                     util.setPassWord(jTextField2.getText());
-                    //获取所有数据库名
+                    //获取所有数据库名 TODO 第一个information_schema可以省略
                     List<String> catalogs = util.getSchemas();
                     jComboBox2.removeAllItems();
                     for (String c : catalogs) {
-                        jComboBox2.addItem(c);
+                        if (!"information_schema".equals(c)) {
+                            jComboBox2.addItem(c);
+                        }
                     }
 
                     JOptionPane.showMessageDialog(null, "连接成功", "提示",

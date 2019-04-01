@@ -487,15 +487,17 @@ public class CodeView extends javax.swing.JFrame{
                     //获取当前文件夹下的模板目录下的所有文件夹          获取当前文件夹下所选取的模板文件夹
                     String basePath = new File("").getAbsolutePath() + File.separatorChar + "模板" + File.separatorChar
                             + jComboBox1.getSelectedItem();//设定为当前文件夹
-                    if (jComboBox1.getSelectedItem() == null || jComboBox1.getSelectedItem() == ""){
+                    //模板非空判断
+                    if ("--请选择模板--".equals(jComboBox1.getSelectedItem())){
                         JOptionPane.showMessageDialog(null, "请选择模板", "提示",
                                 JOptionPane.DEFAULT_OPTION);
                         throw new TempletNullExcepiton("未选择生成模板！");
 
                     }
+
                     pathMap.put("templetPath", basePath);
                     pathMap.put("projectTempletPath", basePath + File.separatorChar + "工程模板");
-                    pathMap.put("tablleTempletPath", basePath + File.separatorChar + "表级模板");
+//                    pathMap.put("tablleTempletPath", basePath + File.separatorChar + "表级模板");
                     pathMap.put("columnTempletPath", basePath + File.separatorChar + "列级模板");
                     pathMap.put("xmlPath", jTextField4.getText());                      //结构文档路径db.xml
                     pathMap.put("codePath", jTextField5.getText());                     //代码生成路径
@@ -527,7 +529,7 @@ public class CodeView extends javax.swing.JFrame{
                     JOptionPane.showMessageDialog(null, "代码生成成功", "提示",
                             JOptionPane.DEFAULT_OPTION);
 
-                } catch (Exception e) {
+                }catch (Exception e) {
                     e.printStackTrace();
                     JOptionPane.showMessageDialog(null, "发生错误", "错误详情请查看error.log",
                             JOptionPane.INFORMATION_MESSAGE);
