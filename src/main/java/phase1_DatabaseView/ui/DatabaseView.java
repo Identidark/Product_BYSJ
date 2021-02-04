@@ -299,8 +299,6 @@ public class DatabaseView extends javax.swing.JFrame {
             try {
                 //获取用户选择的数据库
                 db = this.jComboBox2.getSelectedItem().toString();
-                // TODO 数据库未选取情况！！！！！！！！！！！！！！！！！！！！！！！！1
-
             } catch (Exception e1) {
             }
 

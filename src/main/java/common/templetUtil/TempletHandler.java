@@ -212,7 +212,7 @@ public class TempletHandler {
                         newContent=newContent.replace("[type]", column.getColumnType());//java类型
                         newContent=newContent.replace("[dbtype]", column.getColumnDbType());//数据库类型
                         if(column.getColumnComment()==null || column.getColumnComment().equals("")){
-                            column.setColumnComment(column.getColumnName());//设置为名称
+                            column.setColumnComment(column.getColumnName());//设置空备注为名称备注
                         }
                         newContent= newContent.replace("[columnComment]", column.getColumnComment());//备注
                         createContent.append(newContent);
